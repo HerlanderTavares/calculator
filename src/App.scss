@@ -1,0 +1,125 @@
+@import './helpers.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.App {
+  text-align: center;
+  background-color: color(main);
+  height: 100vh;
+  width: 100vw;
+  @include flex-center;
+}
+
+.calculator {
+  background-color: lighten(color(main), 30%);
+  height: 85%;
+  aspect-ratio: 1.4 / 2;
+  min-width: 0;
+  min-height: 0;
+  max-width: 85%;
+  max-height: 100rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 35% 1fr;
+  @include box-shadow(0.5, 0.5, 1, 0.3);
+}
+
+.screen {
+  width: 100%;
+  height: 100%;
+  background-color: darken(white, 5%);
+  @include flex(end, center);
+  padding: 2rem;
+  font-size: 3rem;
+
+  &__container {
+    overflow-y: scroll;
+    width: 100%;
+    height: 100%;
+
+    span {
+      text-align: end;
+      display: block;
+    }
+  }
+}
+
+.buttons {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+.numbers {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.operators {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.button {
+  background-color: lighten(color(main), 10%);
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-size: 1rem;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: white;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: all 300ms ease;
+  }
+
+  &::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    scale: 1.5;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: all 300ms ease;
+  }
+
+  &:hover::before {
+    opacity: 0.1;
+  }
+
+  &:active {
+    &::after {
+      transition: none;
+      opacity: 0.1;
+      scale: 0.5;
+    }
+  }
+}
