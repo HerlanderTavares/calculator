@@ -1,0 +1,35 @@
+Create New Repository
+- 'git init'
+- Go on github.com and create an online repository
+- 'git config --global user.name HerlanderTavares'
+- 'git config --global user.email angui.tavares@gmail.com'
+- 'git remote add origin https://github.com/HerlanderTavares/<project-name>.git'
+- 'git branch -M main'
+- 'git push -u origin main'
+
+See all commits
+- git log --oneline
+
+Upload Commits
+- git add -A
+- git commit -m '(message)'
+- git push origin master
+
+Change Last Commit Message
+- git commit --amend
+- i (to enable typing)
+- (change the message)
+- Press esc, :, w, q, enter
+
+Change Other Commit Messages
+- git rebase -i HEAD~2 (or any number as far back the commits you want to go)
+- (a menu will show up)
+- (go to the desired commit)
+- i (to enable typing)
+- (change the word 'pick' to 'reword')
+- Press esc, :, w, q, enter
+- (now a menu similar to 'Last Commit' will show)
+- (repeat 'Last Commit' process)
+
+Video on Git Magic
+- https://www.youtube.com/watch?v=ElRzTuYln0M

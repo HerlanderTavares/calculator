@@ -1,4 +1,5 @@
 import './App.scss';
+import {validation} from './helpers';
 
 export default function Button(props) {
   const styles = {
@@ -7,9 +8,21 @@ export default function Button(props) {
     background: props.color || null,
   };
 
+  const calculate = () => {
+    const equation = props.state.equation.replace('÷', '/').replace('×', '*').replace('−', '-');
+
+    try {
+      const calculation = eval(equation);
+      props.state.setEquation(`${calculation}`);
+      props.state.setHasCalculated(true);
+    } catch (error) {
+      props.state.setError(true);
+    }
+  };
+
   const click = () => {
-    if (props.label !== 'C' && props.label !== 'AC' && props.label !== '=')
-      props.onClick(prevState => prevState + props.label);
+    if (props.state.error) props.state.setError(false);
+    validation(props.label, props.state, calculate);
   };
 
   return (
