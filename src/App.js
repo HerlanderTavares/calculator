@@ -1,5 +1,13 @@
-import "./App.scss";
-import Calculator from "./Calculator";
+import './App.scss';
+import Calculator from './Calculator';
+
+const resize = () => {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+};
+
+resize();
+window.addEventListener('resize', resize);
 
 function App() {
   return (

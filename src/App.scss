@@ -1,5 +1,9 @@
 @import './helpers.scss';
 
+:root {
+  --vh: 1vh;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -16,6 +20,7 @@ button {
   text-align: center;
   background-color: color(main);
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   width: 100vw;
   @include flex-center;
 }
@@ -33,14 +38,14 @@ button {
   grid-template-rows: 35% 1fr;
   @include box-shadow(0.5, 0.5, 1, 0.3);
 
-  @media (max-height: 34.375em) and (orientation: portrait) {
+  @media (orientation: portrait) {
     height: 100%;
     width: 100%;
     max-width: unset;
     aspect-ratio: unset;
   }
 
-  @media (max-width: 21.875em) and (orientation: portrait) {
+  @media (max-height: 25em) {
     height: 100%;
     width: 100%;
     max-width: unset;
